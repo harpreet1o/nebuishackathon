@@ -1,0 +1,28 @@
+{
+  "fields": [
+    {
+      "name": "first_name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "last_name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "email",
+      "type": "email",
+      "required": true
+    },
+    {
+      "name": "phone",
+      "type": "phone",
+      "required": false
+    },
+    {
+        "name":"Casl-opt",
+        "type":"bool",
+        "required": true
+    }
+]}
