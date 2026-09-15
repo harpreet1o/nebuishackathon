@@ -1,7 +1,8 @@
 import json
 
-from app.schema import TargetSchema
-
+from app.models.schema import TargetSchema
+from app.profiler.profile import profile_dataframe
+from app.profiler.profile import load_excel
 
 def main():
     with open("schemas/velocity.json", "r", encoding="utf-8") as file:
@@ -10,15 +11,14 @@ def main():
     target_schema = TargetSchema.model_validate(data)
 
     print("Target Schema")
-    print("-------------")
+    # Load messy Excel file
+    df = load_excel("data/input/Book1.xlsx")
 
-    for field in target_schema.fields:
-        print(
-            f"{field.name} | "
-            f"type={field.type} | "
-            f"required={field.required}"
-        )
-
+    # Profile the messy data
+    profile = profile_dataframe(df)
+    print("Data Profile")
+    print("------------")
+    print(profile)
 
 if __name__ == "__main__":
     main()
